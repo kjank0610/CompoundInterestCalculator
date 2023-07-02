@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <title>Calculation Form</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <meta charset="utf-8"/>
+    <script src="https://kit.fontawesome.com/492b772130.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        function clearfields() {
+
+        document.getElementById("prin").value = "";
+        document.getElementById("rate").value = "";
+        document.getElementById("period").value = "";
+        document.getElementById("time").value = "";
+        }
+
+        function computeCompoundInterest() {
+
+            let principal = document.getElementById("prin").value;
+            let rate = document.getElementById("rate").value;
+            let period = document.getElementById("period").value;
+            let time = document.getElementById("time").value;
+            let compoundInterest = principal * Math.pow(1 + (rate/period), period * time);
+
+            if(isNaN(principal) || isNaN(rate) || isNaN(period) || isNaN(time)){
+                alert("Invalid input");
+            }
+
+            document.getElementById("answer").innerHTML = compoundInterest;
+        }
+
+    </script>
+  </head>
+
+  <body>
+      <div class="container">
+          <div class="main">
+
+              <form action="#" method="post" name="form_name" id="form_id" class="pure-form" >
+                  <h1>Compound Interest Calculator</h1>
+                  <i class="fa-solid fa-money-bill-trend-up"></i>
+
+                  <label>Principle :</label>
+                  <input type="text" name="prin" id="prin" placeholder="Amount"/><br>
+                  <br>
+
+                  <i class="fa-solid fa-r"></i>
+                  <label>Interest Rate :</label>
+                  <input type="text" name="rate" id="rate" placeholder="Express as decimal" /><br>
+                  <br>
+
+                  <i class="fa-solid fa-p"></i>
+                  <label>Period :</label>
+                  <input type="text" name="period" id="period" placeholder="Period" /><br>
+                  <br>
+
+                  <i class="fa-solid fa-t"></i>
+                  <label>Time :</label>
+                  <input type="text" name="time" id="time" placeholder="Time money is invested" /><br>
+                  <br>
+
+                  <input class="pure-button pure-button-primary" type="button" id="compute" name="compute"  value="CALCULATE" onclick="computeCompoundInterest()" />
+                  <input class="pure-button pure-button-primary" type="button" id="clear" name="clear"  value="CLEAR" onclick="clearfields()" />
+              </form>
+          </div>
+      </div>
+      <br>
+      <h3 id = "final-amount">Final Amount</h3>
+      <h2 id="answer"></h2>
+  </body>
+</html>
